@@ -15,7 +15,9 @@ namespace FormsGame
         List<string> keysdown = new List<string>();
         List<PictureBox> bullets = new List<PictureBox>();
         int speed = 5;
-        int bcnt = 0;
+        Random rnd = new Random();
+        long time = 0;
+        long temptime = 0;
         public Form1()
         {
             InitializeComponent();
@@ -23,27 +25,39 @@ namespace FormsGame
             this.KeyUp += new KeyEventHandler(OnKeyUp);
             timer1.Start();
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        public void UpdateLbl()
         {
             lblSpeed.Text = "Speed: " + speed.ToString();
             lblLocation.Text = "Location: " + box.Location.X.ToString() + ", " + box.Location.Y.ToString();
             lblBulletCount.Text = "Bullet Count: " + bullets.Count;
+            lblTime.Text = "Time: " + time;
+            lbltTime.Text = "TTime: " + temptime;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time++;
+            UpdateLbl();
+            MoveBullets();
+            if ((time > temptime + 10) && keysdown.Contains(Keys.Space.ToString()))
+            {
+                temptime = time;
+                SpawnBullet();
+            }
             if (keysdown.Contains(Keys.Up.ToString()))
             {
-                box.Location = new Point(box.Location.X, box.Location.Y - speed);
+                box.Yb += speed;
             }
             if (keysdown.Contains(Keys.Down.ToString()))
             {
-                box.Location = new Point(box.Location.X, box.Location.Y + speed);
+                box.Yb -= speed;
             }
             if (keysdown.Contains(Keys.Left.ToString()))
             {
-                box.Location = new Point(box.Location.X - speed, box.Location.Y);
+                box.Xb -= speed;
             }
             if (keysdown.Contains(Keys.Right.ToString()))
             {
-                box.Location = new Point(box.Location.X + speed, box.Location.Y);
+                box.Xb += speed;
             }
             if (keysdown.Contains(Keys.Z.ToString()))
             {
@@ -57,20 +71,6 @@ namespace FormsGame
             {
                 box.BackColor = Color.Yellow;
             }
-            if (bcnt >= 10)
-            {
-                bcnt = 0;
-            }
-            else
-            {
-                bcnt++;
-            }
-            if (keysdown.Contains(Keys.Space.ToString()) && (bcnt == 0))
-            {
-                SpawnBullet();
-            }
-            MoveBullets();
-            
         }
 
         public void SpawnBullet()
@@ -80,8 +80,8 @@ namespace FormsGame
                 Anchor = (AnchorStyles.Bottom | AnchorStyles.Left),
                 Location = new Point(box.Location.X, box.Location.Y),
                 Size = new Size(25, 25),
-                BackColor = Color.Black
-            };
+                BackColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
+        };
             bullets.Add(bullet);
             Controls.Add(bullet);
         }
@@ -108,8 +108,6 @@ namespace FormsGame
             if (!keysdown.Contains(e.KeyCode.ToString()))
                 keysdown.Add(e.KeyCode.ToString());
             UpdateKeys();
-            if (e.KeyCode == Keys.Space)
-                bcnt = 0;
         }
 
         public void OnKeyUp(object sender, KeyEventArgs e)
@@ -124,9 +122,5 @@ namespace FormsGame
             lblKeys.Text = "Keys: " + string.Join(", ", keysdown);
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

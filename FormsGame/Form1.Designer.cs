@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lblKeys = new System.Windows.Forms.Label();
-            this.box = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblSpeed = new System.Windows.Forms.Label();
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblBulletCount = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lbltTime = new System.Windows.Forms.Label();
+            this.box = new FormsGame.PlayerBox();
             ((System.ComponentModel.ISupportInitialize)(this.box)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,19 +49,9 @@
             this.lblKeys.TabIndex = 0;
             this.lblKeys.Text = "Keys:";
             // 
-            // box
-            // 
-            this.box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.box.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.box.Location = new System.Drawing.Point(343, 166);
-            this.box.Name = "box";
-            this.box.Size = new System.Drawing.Size(50, 50);
-            this.box.TabIndex = 1;
-            this.box.TabStop = false;
-            // 
             // timer1
             // 
-            this.timer1.Interval = 5;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblSpeed
@@ -89,15 +81,45 @@
             this.lblBulletCount.TabIndex = 4;
             this.lblBulletCount.Text = "Bullet Count:";
             // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(12, 61);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(33, 13);
+            this.lblTime.TabIndex = 5;
+            this.lblTime.Text = "Time:";
+            // 
+            // lbltTime
+            // 
+            this.lbltTime.AutoSize = true;
+            this.lbltTime.Location = new System.Drawing.Point(12, 74);
+            this.lbltTime.Name = "lbltTime";
+            this.lbltTime.Size = new System.Drawing.Size(40, 13);
+            this.lbltTime.TabIndex = 6;
+            this.lbltTime.Text = "TTime:";
+            // 
+            // box
+            // 
+            this.box.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.box.Location = new System.Drawing.Point(188, 238);
+            this.box.Name = "box";
+            this.box.Size = new System.Drawing.Size(50, 50);
+            this.box.TabIndex = 7;
+            this.box.TabStop = false;
+            this.box.Xb = 288;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 393);
+            this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.box);
+            this.Controls.Add(this.lbltTime);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblBulletCount);
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.lblSpeed);
-            this.Controls.Add(this.box);
             this.Controls.Add(this.lblKeys);
             this.Name = "Form1";
             this.Text = "Game";
@@ -110,11 +132,13 @@
         #endregion
 
         private System.Windows.Forms.Label lblKeys;
-        private System.Windows.Forms.PictureBox box;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblSpeed;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.Label lblBulletCount;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lbltTime;
+        private PlayerBox box;
     }
 }
 
