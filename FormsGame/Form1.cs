@@ -15,14 +15,20 @@ namespace FormsGame
         List<string> keysdown = new List<string>();
         List<PictureBox> bullets = new List<PictureBox>();
         int speed = 5;
+        int gravity = 9;
         Random rnd = new Random();
         long time = 0;
         long temptime = 0;
+
+        bool fall = true;
+        bool jump = false;
+
         public Form1()
         {
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(OnKeyDown);
             this.KeyUp += new KeyEventHandler(OnKeyUp);
+            box.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             timer1.Start();
         }
         public void UpdateLbl()
@@ -35,7 +41,18 @@ namespace FormsGame
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //xx
+            if(box.Yp < 500)
+            {
+                fall = true;
+            }
+            else
+            {
+                fall = false;
+            }
+            if(fall == true)
+            {
+                box.Yb -= gravity;
+            }
             time++;
             UpdateLbl();
             MoveBullets();
@@ -70,7 +87,7 @@ namespace FormsGame
             }
             else
             {
-                box.BackColor = Color.Yellow;
+                box.BackColor = Color.Black;
             }
         }
 
@@ -82,7 +99,8 @@ namespace FormsGame
                 Location = new Point(box.Location.X, box.Location.Y),
                 Size = new Size(25, 25),
                 BackColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256))
-        };
+            };
+
             bullets.Add(bullet);
             Controls.Add(bullet);
         }

@@ -101,13 +101,15 @@
             // 
             // box
             // 
+            this.box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.box.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.box.Location = new System.Drawing.Point(188, 238);
+            this.box.Location = new System.Drawing.Point(476, 238);
             this.box.Name = "box";
             this.box.Size = new System.Drawing.Size(50, 50);
             this.box.TabIndex = 7;
             this.box.TabStop = false;
-            this.box.Xb = 288;
+            this.box.Xb = 0;
+            this.box.Yb = 0;
             // 
             // Form1
             // 

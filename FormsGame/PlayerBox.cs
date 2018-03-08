@@ -34,5 +34,21 @@ namespace FormsGame
                 this.Location = new Point(this.Location.X, this.Location.Y - value);
             }
         }
+
+        public int Xp
+        {
+            get
+            {
+                return this.Location.X;
+            }
+        }
+
+        public int Yp
+        {
+            get
+            {
+                return this.Location.Y;
+            }
+        }
     }
 }
