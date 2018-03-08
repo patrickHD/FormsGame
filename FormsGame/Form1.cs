@@ -35,6 +35,7 @@ namespace FormsGame
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //xx
             time++;
             UpdateLbl();
             MoveBullets();
