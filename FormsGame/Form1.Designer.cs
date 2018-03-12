@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblKeys = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblSpeed = new System.Windows.Forms.Label();
@@ -36,7 +37,12 @@
             this.lblBulletCount = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lbltTime = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ruler = new System.Windows.Forms.PictureBox();
+            this.rulerbg = new System.Windows.Forms.PictureBox();
             this.box = new FormsGame.PlayerBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ruler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rulerbg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.box)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +105,34 @@
             this.lbltTime.TabIndex = 6;
             this.lbltTime.Text = "TTime:";
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(12, 6);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(124, 251);
+            this.textBox1.TabIndex = 8;
+            // 
+            // ruler
+            // 
+            this.ruler.Image = ((System.Drawing.Image)(resources.GetObject("ruler.Image")));
+            this.ruler.Location = new System.Drawing.Point(176, 35);
+            this.ruler.Name = "ruler";
+            this.ruler.Size = new System.Drawing.Size(9000, 100);
+            this.ruler.TabIndex = 9;
+            this.ruler.TabStop = false;
+            // 
+            // rulerbg
+            // 
+            this.rulerbg.Image = ((System.Drawing.Image)(resources.GetObject("rulerbg.Image")));
+            this.rulerbg.Location = new System.Drawing.Point(-800, 156);
+            this.rulerbg.Name = "rulerbg";
+            this.rulerbg.Size = new System.Drawing.Size(9000, 282);
+            this.rulerbg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rulerbg.TabIndex = 10;
+            this.rulerbg.TabStop = false;
+            // 
             // box
             // 
             this.box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,6 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.box);
             this.Controls.Add(this.lbltTime);
             this.Controls.Add(this.lblTime);
@@ -123,8 +158,12 @@
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.lblSpeed);
             this.Controls.Add(this.lblKeys);
+            this.Controls.Add(this.ruler);
+            this.Controls.Add(this.rulerbg);
             this.Name = "Form1";
             this.Text = "Game";
+            ((System.ComponentModel.ISupportInitialize)(this.ruler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rulerbg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.box)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -141,6 +180,9 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lbltTime;
         private PlayerBox box;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox ruler;
+        private System.Windows.Forms.PictureBox rulerbg;
     }
 }
 
